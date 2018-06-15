@@ -31,14 +31,14 @@ def makeResponse(req):
     date = parameters.get("date")
     if city is None:
         return None
-    r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=41a3b554848895d8eff45e1f045e5a69')
+    r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+{city name}+'&appid=41a3b554848895d8eff45e1f045e5a69')
     json_object = r.json()
     weather=json_object['list']
     for i in range(0,30):
         if date in weather[i]['dt_txt']:
             condition= weather[i]['weather'][0]['description']
             break
-    speech = "The forecast for"+city+ "for "+date+" is "+condition
+    speech = "The forecast for"+{city name}+ "for "+date+" is "+condition
     return {
     "speech": speech,
     "displayText": speech,
